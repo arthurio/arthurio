@@ -79,7 +79,7 @@ export class CommandRegistry implements CompletionSource {
   }
 }
 
-const MATRIX_USAGE = 'usage: matrix [up|down|on|off|0-10]';
+const MATRIX_SYNTAX = 'matrix [up|down|on|off|0-10]';
 
 function formatIntensity(value: number): string {
   return value <= 0 ? 'off' : `${Math.round(value * 10) / 10}/10`;
@@ -102,7 +102,7 @@ export function runMatrix(args: string[], rain: RainControl): CommandResult {
   } else if (/^\d+$/.test(arg) && Number(arg) <= 10) {
     next = Number(arg);
   } else {
-    return { lines: [error(`matrix: invalid argument '${args[0] ?? ''}'`), dim(MATRIX_USAGE)] };
+    return { lines: [error(`matrix: invalid argument '${args[0] ?? ''}'`), dim(`usage: ${MATRIX_SYNTAX}`)] };
   }
   rain.setIntensity(next);
   return { lines: [out(`matrix rain: ${formatIntensity(rain.getIntensity())}`)] };
@@ -213,7 +213,7 @@ const clear: Command = {
 const matrix: Command = {
   name: 'matrix',
   summary: 'toggle or set rain intensity',
-  usage: 'matrix [up|down|on|off|0-10]',
+  usage: MATRIX_SYNTAX,
   args: ['up', 'down', 'on', 'off'],
   run: (args, ctx) => runMatrix(args, ctx.rain),
 };
