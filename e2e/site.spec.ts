@@ -54,6 +54,22 @@ test.describe('terminal', () => {
     }
   });
 
+  test('help shows each command name on its own line with an indented summary line', async ({
+    page,
+  }) => {
+    await openSite(page);
+    await runCommand(page, 'help');
+    const text = await page.locator('#terminal-output').innerText();
+    const lines = text.split('\n').map((l) => l.replace(/\s+$/, ''));
+    const idx = lines.findIndex((l) => l.trim() === 'whoami');
+    expect(idx).toBeGreaterThan(-1);
+    expect(lines[idx]?.trim()).toBe('whoami');
+    expect(lines[idx + 1]).toMatch(/^\s{2,}\S/);
+    expect(lines[idx + 1]?.trim()).toBe('who am I');
+    expect(text).toContain('matrix [up|down|on|off|0-10]');
+    expect(text).toContain('Tab completes, arrow up/down browse history.');
+  });
+
   test('whoami prints the profile', async ({ page }) => {
     await openSite(page);
     await runCommand(page, 'whoami');

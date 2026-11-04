@@ -7,7 +7,12 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env['CI'],
   retries: process.env['CI'] ? 1 : 0,
-  reporter: process.env['CI'] ? [['github'], ['html', { open: 'never' }]] : 'list',
+  reporter: [
+    ...(process.env['CI'] ? [['github'], ['html', { open: 'never' }]] : [['list']]),
+    ...(process.env['MCODE_DIR']
+      ? [['json', { outputFile: `${process.env['MCODE_DIR']}/fe_testing/playwright-results.json` }]]
+      : []),
+  ] as import('@playwright/test').ReporterDescription[],
   use: {
     baseURL: `http://localhost:${PORT}`,
     trace: 'on-first-retry',
