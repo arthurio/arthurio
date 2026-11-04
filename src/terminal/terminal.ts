@@ -12,6 +12,8 @@ import { dim, isSafeHref, type CommandResult, type Line } from './types';
 export const PROMPT = 'guest@arthurio:~$';
 const MAX_LOG_LINES = 500;
 
+const promptLine = (input: string): Line => ({ text: `${PROMPT} ${input}`, kind: 'input' });
+
 export interface TerminalOptions {
   output: HTMLElement;
   input: HTMLInputElement;
@@ -105,7 +107,7 @@ export class Terminal {
 
   private async execute(input: string): Promise<void> {
     this.history.push(input);
-    this.print([{ text: `${PROMPT} ${input}`, kind: 'input' }]);
+    this.print([promptLine(input)]);
     const result: CommandResult = await this.registry.execute(input, this.context);
     if (result.clear) this.clear();
     this.print(result.lines);
@@ -125,10 +127,7 @@ export class Terminal {
       const result = complete(this.input.value, this.registry);
       if (result.completed !== this.input.value) this.setInput(result.completed);
       if (result.matches.length > 1) {
-        this.print([
-          { text: `${PROMPT} ${this.input.value}`, kind: 'input' },
-          dim(result.matches.join('  ')),
-        ]);
+        this.print([promptLine(this.input.value), dim(result.matches.join('  '))]);
       }
     } else if (event.key === 'l' && event.ctrlKey) {
       event.preventDefault();
