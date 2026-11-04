@@ -21,11 +21,11 @@ export interface CanvasStats {
   litPixels: number;
 }
 
+const rainCanvas = (page: Page) => page.locator('#rain').and(page.locator('canvas'));
+
 /** Count lit pixels on the rain canvas (green channel well above the dark background). */
 export async function readCanvasStats(page: Page): Promise<CanvasStats> {
-  return page.evaluate(() => {
-    const canvas = document.getElementById('rain');
-    if (!(canvas instanceof HTMLCanvasElement)) throw new Error('missing #rain');
+  return rainCanvas(page).evaluate((canvas: HTMLCanvasElement) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) throw new Error('no 2d context');
     const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -38,9 +38,5 @@ export async function readCanvasStats(page: Page): Promise<CanvasStats> {
 }
 
 export function canvasDataUrl(page: Page): Promise<string> {
-  return page.evaluate(() => {
-    const canvas = document.getElementById('rain');
-    if (!(canvas instanceof HTMLCanvasElement)) throw new Error('missing #rain');
-    return canvas.toDataURL();
-  });
+  return rainCanvas(page).evaluate((canvas: HTMLCanvasElement) => canvas.toDataURL());
 }
