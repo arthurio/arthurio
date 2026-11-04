@@ -208,3 +208,10 @@ body {
 .line-input {
   color: var(--fg-dim);
 }
+
+/* Themed scrollbars so the output pane matches the active theme. */
+#terminal,
+#terminal * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--fg-dim) transparent;
+}

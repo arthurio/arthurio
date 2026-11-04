@@ -133,9 +133,10 @@ const help: Command = {
   run: (_args, ctx) => ({
     lines: [
       heading('Available commands:'),
-      ...ctx.registry.commandsList.map((c) =>
-        out(`  ${(c.usage ?? c.name).padEnd(34)}${c.summary}`),
-      ),
+      ...ctx.registry.commandsList.flatMap((c) => [
+        out(`  ${c.usage ?? c.name}`),
+        dim(`      ${c.summary}`),
+      ]),
       blank(),
       dim('Tab completes, arrow up/down browse history.'),
     ],
