@@ -41,7 +41,15 @@ test.describe('terminal', () => {
     await openSite(page);
     await runCommand(page, 'help');
     const log = page.locator('#terminal-output');
-    for (const name of ['whoami', 'experience', 'skills', 'projects', 'contact', 'matrix', 'theme']) {
+    for (const name of [
+      'whoami',
+      'experience',
+      'skills',
+      'projects',
+      'contact',
+      'matrix',
+      'theme',
+    ]) {
       await expect(log).toContainText(name);
     }
   });
@@ -65,10 +73,9 @@ test.describe('terminal', () => {
     await runCommand(page, 'contact');
     const link = page.locator('#terminal-output a[href^="mailto:"]');
     await expect(link).toHaveCount(1);
-    await expect(page.locator('#terminal-output a[href^="https://github.com/arthurio"]')).toHaveAttribute(
-      'rel',
-      /noopener/,
-    );
+    await expect(
+      page.locator('#terminal-output a[href^="https://github.com/arthurio"]'),
+    ).toHaveAttribute('rel', /noopener/);
   });
 
   test('theme cycles data-theme and clear empties the log', async ({ page }) => {
@@ -196,7 +203,10 @@ test.describe('assets', () => {
   });
 
   test('self-hosted font files are served', async ({ page }) => {
-    for (const file of ['jetbrains-mono-latin-400-normal.woff2', 'jetbrains-mono-latin-700-normal.woff2']) {
+    for (const file of [
+      'jetbrains-mono-latin-400-normal.woff2',
+      'jetbrains-mono-latin-700-normal.woff2',
+    ]) {
       const res = await page.request.get(`/fonts/${file}`);
       expect(res.status()).toBe(200);
     }
@@ -208,7 +218,9 @@ test.describe('fallback content', () => {
     await page.goto('/');
     const fallback = page.locator('#fallback');
     await expect(fallback).toContainText('Notivize');
-    await expect(fallback.locator('a[href="https://github.com/arthurio/fastapi-filter"]')).toHaveCount(1);
+    await expect(
+      fallback.locator('a[href="https://github.com/arthurio/fastapi-filter"]'),
+    ).toHaveCount(1);
     await expect(fallback.locator('a[href^="mailto:"]')).toHaveCount(1);
   });
 });

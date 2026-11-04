@@ -5,16 +5,7 @@ import { parseInput } from './parser';
 import type { CompletionSource } from './completion';
 import { THEMES, nextTheme, type ThemeControl } from './theme';
 import type { ProjectsResult } from './github';
-import {
-  blank,
-  dim,
-  error,
-  heading,
-  link,
-  out,
-  type CommandResult,
-  type Line,
-} from './types';
+import { blank, dim, error, heading, link, out, type CommandResult, type Line } from './types';
 
 /** Minimal rain surface the `matrix` command needs. */
 export interface RainControl {
@@ -142,7 +133,9 @@ const help: Command = {
   run: (_args, ctx) => ({
     lines: [
       heading('Available commands:'),
-      ...ctx.registry.commandsList.map((c) => out(`  ${(c.usage ?? c.name).padEnd(34)}${c.summary}`)),
+      ...ctx.registry.commandsList.map((c) =>
+        out(`  ${(c.usage ?? c.name).padEnd(34)}${c.summary}`),
+      ),
       blank(),
       dim('Tab completes, arrow up/down browse history.'),
     ],

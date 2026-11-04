@@ -100,8 +100,18 @@ describe('parseRepos', () => {
   it('filters forks, archived and the profile repo, and ignores junk', () => {
     const repos = parseRepos(
       [
-        { name: 'a', html_url: 'https://github.com/arthurio/a', stargazers_count: 1, description: 'x' },
-        { name: 'b', html_url: 'https://github.com/arthurio/b', stargazers_count: 9, description: null },
+        {
+          name: 'a',
+          html_url: 'https://github.com/arthurio/a',
+          stargazers_count: 1,
+          description: 'x',
+        },
+        {
+          name: 'b',
+          html_url: 'https://github.com/arthurio/b',
+          stargazers_count: 9,
+          description: null,
+        },
         { name: 'f', html_url: 'https://github.com/arthurio/f', fork: true },
         { name: 'z', html_url: 'https://github.com/arthurio/z', archived: true },
         { name: 'arthurio', html_url: 'https://github.com/arthurio/arthurio' },

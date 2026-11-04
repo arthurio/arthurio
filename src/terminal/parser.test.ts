@@ -6,7 +6,12 @@ describe('tokenize', () => {
     expect(tokenize('  matrix   up ')).toEqual(['matrix', 'up']);
   });
   it('honours quotes and escapes', () => {
-    expect(tokenize('say "hello world" \'a b\' c\\ d')).toEqual(['say', 'hello world', 'a b', 'c d']);
+    expect(tokenize('say "hello world" \'a b\' c\\ d')).toEqual([
+      'say',
+      'hello world',
+      'a b',
+      'c d',
+    ]);
   });
   it('keeps empty quoted tokens and tolerates unterminated quotes', () => {
     expect(tokenize('a "" b')).toEqual(['a', '', 'b']);

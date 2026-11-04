@@ -14,8 +14,7 @@ import {
 } from './core';
 import { prefersReducedMotion, shouldAnimate, watchReducedMotion } from './motion';
 
-export const GLYPHS =
-  'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789';
+export const GLYPHS = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789';
 
 /** Simulation step: 30 Hz regardless of display refresh rate. */
 export const STEP_MS = 1000 / 30;
