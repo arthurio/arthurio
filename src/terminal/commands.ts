@@ -102,7 +102,9 @@ export function runMatrix(args: string[], rain: RainControl): CommandResult {
   } else if (/^\d+$/.test(arg) && Number(arg) <= 10) {
     next = Number(arg);
   } else {
-    return { lines: [error(`matrix: invalid argument '${args[0] ?? ''}'`), dim(`usage: ${MATRIX_SYNTAX}`)] };
+    return {
+      lines: [error(`matrix: invalid argument '${args[0] ?? ''}'`), dim(`usage: ${MATRIX_SYNTAX}`)],
+    };
   }
   rain.setIntensity(next);
   return { lines: [out(`matrix rain: ${formatIntensity(rain.getIntensity())}`)] };
