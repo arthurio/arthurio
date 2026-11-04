@@ -199,3 +199,12 @@ body {
     padding: 0.75rem;
   }
 }
+
+.line-heading {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.line-input {
+  color: var(--fg-dim);
+}
