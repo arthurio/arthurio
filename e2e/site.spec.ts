@@ -97,7 +97,7 @@ test.describe('terminal', () => {
   test('theme cycles data-theme and clear empties the log', async ({ page }) => {
     await openSite(page);
     await runCommand(page, 'theme');
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'amber');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'green');
     await runCommand(page, 'theme cyan');
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'cyan');
     await runCommand(page, 'clear');
@@ -220,8 +220,8 @@ test.describe('assets', () => {
 
   test('self-hosted font files are served', async ({ page }) => {
     for (const file of [
-      'jetbrains-mono-latin-400-normal.woff2',
-      'jetbrains-mono-latin-700-normal.woff2',
+      'hack-nerd-font-mono-Regular.woff2',
+      'hack-nerd-font-mono-Bold.woff2',
     ]) {
       const res = await page.request.get(`/fonts/${file}`);
       expect(res.status()).toBe(200);
@@ -233,7 +233,7 @@ test.describe('fallback content', () => {
   test('semantic profile summary is present for assistive tech', async ({ page }) => {
     await page.goto('/');
     const fallback = page.locator('#fallback');
-    await expect(fallback).toContainText('Notivize');
+    await expect(fallback).toContainText('modelcode.ai');
     await expect(
       fallback.locator('a[href="https://github.com/arthurio/fastapi-filter"]'),
     ).toHaveCount(1);

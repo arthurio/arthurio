@@ -102,7 +102,7 @@ describe('content commands', () => {
   it('whoami, experience, skills use profile data', async () => {
     const { registry, ctx } = setup();
     expect(texts(await registry.execute('whoami', ctx))).toContain('Arthur Rio');
-    expect(texts(await registry.execute('experience', ctx))).toContain('Notivize');
+    expect(texts(await registry.execute('experience', ctx))).toContain('modelcode.ai');
     expect(texts(await registry.execute('skills', ctx))).toContain('FastAPI');
   });
 
@@ -175,14 +175,14 @@ describe('theme', () => {
       await registry.execute('theme', ctx);
       seen.push(ctx.theme.get());
     }
-    expect(seen).toEqual(['green', 'amber', 'cyan', 'green']);
+    expect(seen).toEqual(['purple', 'green', 'amber', 'cyan', 'purple']);
   });
 
   it('sets a named theme and rejects unknown ones', async () => {
     const { registry, ctx } = setup();
     await registry.execute('theme cyan', ctx);
     expect(ctx.theme.get()).toBe('cyan');
-    const r = await registry.execute('theme purple', ctx);
+    const r = await registry.execute('theme pink', ctx);
     expect(r.lines[0]?.kind).toBe('error');
     expect(ctx.theme.get()).toBe('cyan');
   });

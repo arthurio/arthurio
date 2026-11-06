@@ -2,10 +2,10 @@
 
 ### Hi there 👋
 
-- 🔭 **I’m currently working on**: Building the best notification as a service platform @Notivize.
+- 🔭 **I’m currently working on**: Working at [modelcode.ai](https://modelcode.ai).
 - 🌱 **I’m currently learning**: FastAPI, asyncio, sqlalchemy 🐍
 - 👯 **I'm actively working on**: https://github.com/arthurio/fastapi-filter
-- 💬 **Ask me about**: Why you should join Notivize 🦄
+- 💬 **Ask me about**: Why you should join modelcode.ai 🦄
 - 📫 **How to reach me**: arthur.rio44@gmail.com
 - 😄 **Pronouns**: he/him/his
 

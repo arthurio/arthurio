@@ -5,15 +5,16 @@ describe('isThemeName', () => {
   it('accepts known themes only', () => {
     for (const name of THEMES) expect(isThemeName(name)).toBe(true);
     expect(isThemeName('')).toBe(false);
-    expect(isThemeName('purple')).toBe(false);
+    expect(isThemeName('pink')).toBe(false);
   });
 });
 
 describe('nextTheme', () => {
   it('cycles through the themes', () => {
+    expect(nextTheme('purple')).toBe('green');
     expect(nextTheme('green')).toBe('amber');
     expect(nextTheme('amber')).toBe('cyan');
-    expect(nextTheme('cyan')).toBe('green');
+    expect(nextTheme('cyan')).toBe('purple');
   });
 
   it('starts from the first theme for unknown input', () => {

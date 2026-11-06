@@ -58,8 +58,8 @@ function readColors(): Colors {
   const get = (name: string, fallback: string): string =>
     style.getPropertyValue(name).trim() || fallback;
   return {
-    bg: get('--bg', '#000a00'),
-    rain: get('--rain', '#00ff41'),
+    bg: get('--bg', '#272822'),
+    rain: get('--rain', '#ae81ff'),
     head: get('--accent', '#ffffff'),
   };
 }
@@ -137,7 +137,7 @@ export function createRainRenderer(options: RainOptions): RainRenderer {
     g.shadowBlur = 0;
     g.fillStyle = colors.bg;
     g.fillRect(0, 0, cssWidth, cssHeight);
-    g.font = `${fontSize}px "JetBrains Mono", ui-monospace, monospace`;
+    g.font = `${fontSize}px "Hack Nerd Font Mono", ui-monospace, monospace`;
     g.textAlign = 'center';
     g.textBaseline = 'alphabetic';
     g.shadowColor = colors.rain;

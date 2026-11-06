@@ -3,7 +3,7 @@
  *
  * TODO(owner): CONTENT MUST BE CONFIRMED BY THE SITE OWNER.
  * LinkedIn cannot be scraped, so everything below is derived only from the
- * facts in README.md (Notivize, fastapi-filter, FastAPI/asyncio/SQLAlchemy,
+ * facts in README.md (modelcode.ai, fastapi-filter, FastAPI/asyncio/SQLAlchemy,
  * contact links). No employers, titles or dates have been invented; the
  * experience, skills and headline text is deliberately generic. Replace or
  * extend with verified details before launch.
@@ -42,19 +42,19 @@ export const profile: Profile = {
   name: 'Arthur Rio',
   handle: 'arthurio',
   pronouns: 'he/him/his',
-  headline: 'Software engineer building notification infrastructure.',
-  currentWork: 'Building the best notification as a service platform @Notivize.',
+  headline: 'Software engineer at modelcode.ai.',
+  currentWork: 'Working at modelcode.ai.',
   learning: ['FastAPI', 'asyncio', 'SQLAlchemy'],
   email: 'arthur.rio44@gmail.com',
   linkedin: 'https://www.linkedin.com/in/arthurio/',
   github: 'https://github.com/arthurio',
-  skills: ['Python', 'FastAPI', 'asyncio', 'SQLAlchemy', 'Notification systems', 'Open source'],
+  skills: ['Python', 'FastAPI', 'asyncio', 'SQLAlchemy', 'Open source'],
   experience: [
     {
       role: 'Engineer',
-      org: 'Notivize',
+      org: 'modelcode.ai',
       period: 'Present',
-      summary: 'Building a notification as a service platform.',
+      summary: 'Software engineer at modelcode.ai.',
     },
   ],
   projects: [

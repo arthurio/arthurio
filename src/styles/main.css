@@ -1,49 +1,64 @@
 @font-face {
-  font-family: 'JetBrains Mono';
+  font-family: 'Hack Nerd Font Mono';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+  src: url('/fonts/hack-nerd-font-mono-Regular.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'JetBrains Mono';
+  font-family: 'Hack Nerd Font Mono';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2');
+  src: url('/fonts/hack-nerd-font-mono-Bold.woff2') format('woff2');
 }
 
-/* Themes. All text colours have >= 4.5:1 contrast on --bg (WCAG AA). */
+/*
+ * Monokai-inspired themes. Text stays Monokai off-white; the theme name picks
+ * the accent (Monokai purple / green / orange / cyan) used for the prompt, links,
+ * headings, border and rain. All text colours have >= 4.5:1 contrast on --bg
+ * (WCAG AA).
+ */
 :root,
+:root[data-theme='purple'] {
+  --bg: #272822;
+  --fg: #f8f8f2;
+  --fg-dim: #a59f85;
+  --accent: #ae81ff;
+  --rain: #ae81ff;
+  --panel: rgba(39, 40, 34, 0.86);
+  --focus: #e6db74;
+}
+
 :root[data-theme='green'] {
-  --bg: #000a00;
-  --fg: #33ff66;
-  --fg-dim: #2bbf55;
-  --accent: #b6ffc9;
-  --rain: #00ff41;
-  --panel: rgba(0, 12, 0, 0.78);
-  --focus: #ffffff;
+  --bg: #272822;
+  --fg: #f8f8f2;
+  --fg-dim: #a59f85;
+  --accent: #a6e22e;
+  --rain: #a6e22e;
+  --panel: rgba(39, 40, 34, 0.86);
+  --focus: #e6db74;
 }
 
 :root[data-theme='amber'] {
-  --bg: #0a0600;
-  --fg: #ffb000;
-  --fg-dim: #cc8c00;
-  --accent: #ffe0a0;
-  --rain: #ffb000;
-  --panel: rgba(12, 7, 0, 0.78);
-  --focus: #ffffff;
+  --bg: #272822;
+  --fg: #f8f8f2;
+  --fg-dim: #a59f85;
+  --accent: #fd971f;
+  --rain: #fd971f;
+  --panel: rgba(39, 40, 34, 0.86);
+  --focus: #e6db74;
 }
 
 :root[data-theme='cyan'] {
-  --bg: #00080a;
-  --fg: #33e6ff;
-  --fg-dim: #2bb5cc;
-  --accent: #b3f5ff;
-  --rain: #00e5ff;
-  --panel: rgba(0, 9, 12, 0.78);
-  --focus: #ffffff;
+  --bg: #272822;
+  --fg: #f8f8f2;
+  --fg-dim: #a59f85;
+  --accent: #66d9ef;
+  --rain: #66d9ef;
+  --panel: rgba(39, 40, 34, 0.86);
+  --focus: #e6db74;
 }
 
 *,
@@ -59,7 +74,7 @@ body {
   overflow: hidden;
   background: var(--bg);
   color: var(--fg);
-  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-family: 'Hack Nerd Font Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   font-size: 16px;
   line-height: 1.45;
 }
@@ -84,9 +99,9 @@ body {
   margin: 0 auto;
   padding: 1rem;
   background: var(--panel);
-  border: 1px solid var(--fg-dim);
+  border: 1px solid var(--accent);
   border-radius: 6px;
-  box-shadow: 0 0 24px color-mix(in srgb, var(--fg) 25%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 .terminal-output {
@@ -94,7 +109,6 @@ body {
   overflow-y: auto;
   white-space: pre-wrap;
   word-break: break-word;
-  text-shadow: 0 0 6px color-mix(in srgb, var(--fg) 55%, transparent);
 }
 
 .terminal-output a {
@@ -123,7 +137,7 @@ body {
   background: transparent;
   color: var(--fg);
   font: inherit;
-  caret-color: var(--fg);
+  caret-color: var(--accent);
 }
 
 .boot {
@@ -145,7 +159,7 @@ body {
 }
 
 .line-error {
-  color: #ff6b6b;
+  color: #f92672;
 }
 
 .noscript {

@@ -30,7 +30,7 @@ class TestIndex:
 
     def test_fallback_matches_profile(self, index):
         for s in ["arthur.rio44@gmail.com", "https://www.linkedin.com/in/arthurio/",
-                  "https://github.com/arthurio/fastapi-filter", "Notivize", "SQLAlchemy",
+                  "https://github.com/arthurio/fastapi-filter", "modelcode.ai", "SQLAlchemy",
                   "he/him/his", "<noscript>"]:
             assert s in index.text
 

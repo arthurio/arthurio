@@ -1,8 +1,8 @@
 /** Colour themes. Names must match the `:root[data-theme]` blocks in main.css. */
 
-export const THEMES = ['green', 'amber', 'cyan'] as const;
+export const THEMES = ['purple', 'green', 'amber', 'cyan'] as const;
 export type ThemeName = (typeof THEMES)[number];
-export const DEFAULT_THEME: ThemeName = 'green';
+export const DEFAULT_THEME: ThemeName = 'purple';
 
 export interface ThemeControl {
   readonly names: readonly string[];
