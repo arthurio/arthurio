@@ -219,10 +219,7 @@ test.describe('assets', () => {
   });
 
   test('self-hosted font files are served', async ({ page }) => {
-    for (const file of [
-      'hack-nerd-font-mono-Regular.woff2',
-      'hack-nerd-font-mono-Bold.woff2',
-    ]) {
+    for (const file of ['jetbrains-mono-latin-Regular.woff2', 'jetbrains-mono-latin-Bold.woff2']) {
       const res = await page.request.get(`/fonts/${file}`);
       expect(res.status()).toBe(200);
     }

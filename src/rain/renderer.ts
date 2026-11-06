@@ -137,7 +137,7 @@ export function createRainRenderer(options: RainOptions): RainRenderer {
     g.shadowBlur = 0;
     g.fillStyle = colors.bg;
     g.fillRect(0, 0, cssWidth, cssHeight);
-    g.font = `${fontSize}px "Hack Nerd Font Mono", ui-monospace, monospace`;
+    g.font = `${fontSize}px "JetBrains Mono", ui-monospace, monospace`;
     g.textAlign = 'center';
     g.textBaseline = 'alphabetic';
     g.shadowColor = colors.rain;
