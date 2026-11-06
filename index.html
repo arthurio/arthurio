@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arthur Rio (arthurio) | Terminal</title>
+    <meta
+      name="description"
+      content="Personal website of Arthur Rio (arthurio): software engineer at modelcode.ai and maintaining fastapi-filter."
+    />
+    <meta name="author" content="Arthur Rio" />
+    <meta name="theme-color" content="#272822" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Arthur Rio (arthurio)" />
+    <meta
+      property="og:description"
+      content="Matrix-rain hacker terminal personal website of Arthur Rio."
+    />
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <canvas id="rain" aria-hidden="true"></canvas>
+
+    <div id="crt" class="crt" aria-hidden="true">
+      <div class="crt-scanlines"></div>
+      <div class="crt-vignette"></div>
+      <div class="crt-flicker"></div>
+    </div>
+
+    <div id="boot" class="boot" aria-hidden="true"></div>
+
+    <main id="terminal" class="terminal" aria-label="Interactive terminal">
+      <div
+        id="terminal-output"
+        class="terminal-output"
+        role="log"
+        aria-live="polite"
+        aria-label="Terminal output"
+      ></div>
+      <form id="terminal-form" class="terminal-form" autocomplete="off">
+        <label for="terminal-input" class="terminal-prompt">guest@arthurio:~$</label>
+        <input
+          id="terminal-input"
+          class="terminal-input"
+          type="text"
+          autocomplete="off"
+          autocapitalize="off"
+          autocorrect="off"
+          spellcheck="false"
+          aria-label="Terminal command input. Type help for a list of commands."
+        />
+      </form>
+    </main>
+
+    <section id="fallback" class="visually-hidden" aria-label="Profile summary">
+      <h1>Arthur Rio (arthurio)</h1>
+      <p>Pronouns: he/him/his</p>
+      <p>
+        Currently working at modelcode.ai.
+        Currently learning FastAPI, asyncio and SQLAlchemy.
+      </p>
+      <h2>Experience</h2>
+      <ul>
+        <li>Engineer at modelcode.ai (Present): Software engineer at modelcode.ai.</li>
+      </ul>
+      <h2>Skills</h2>
+      <ul>
+        <li>Python</li>
+        <li>FastAPI</li>
+        <li>asyncio</li>
+        <li>SQLAlchemy</li>
+        <li>Open source</li>
+      </ul>
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/arthurio/fastapi-filter">fastapi-filter</a>
+        </li>
+      </ul>
+      <h2>Contact</h2>
+      <ul>
+        <li><a href="mailto:arthur.rio44@gmail.com">arthur.rio44@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/arthurio/">LinkedIn</a></li>
+        <li><a href="https://github.com/arthurio">GitHub</a></li>
+      </ul>
+    </section>
+
+    <noscript>
+      <div class="noscript">
+        <h1>Arthur Rio (arthurio)</h1>
+        <p>This site is best experienced with JavaScript enabled. Profile summary:</p>
+        <ul>
+          <li>Working at modelcode.ai.</li>
+          <li>Learning FastAPI, asyncio and SQLAlchemy.</li>
+          <li>
+            Project:
+            <a href="https://github.com/arthurio/fastapi-filter">fastapi-filter</a>
+          </li>
+          <li>Email: <a href="mailto:arthur.rio44@gmail.com">arthur.rio44@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/arthurio/">LinkedIn</a></li>
+          <li><a href="https://github.com/arthurio">GitHub</a></li>
+          <li>Pronouns: he/him/his</li>
+        </ul>
+      </div>
+    </noscript>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
