@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+playwright-report
+test-results
+.lighthouseci
+.venv
+venv
+package-lock.json
+README.md
+public/fonts
+.mcode

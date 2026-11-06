@@ -1,1 +1,17 @@
 .DS_Store
+node_modules/
+dist/
+playwright-report/
+test-results/
+.lighthouseci/
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+coverage/
+*.log
+
+# pip cache
+pip/

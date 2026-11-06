@@ -1,0 +1,231 @@
+@font-face {
+  font-family: 'Hack Nerd Font Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/hack-nerd-font-mono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Hack Nerd Font Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/hack-nerd-font-mono-Bold.woff2') format('woff2');
+}
+
+/*
+ * Monokai-inspired themes. Text stays Monokai off-white; the theme name picks
+ * the accent (Monokai purple / green / orange / cyan) used for the prompt, links,
+ * headings, border and rain. All text colours have >= 4.5:1 contrast on --bg
+ * (WCAG AA).
+ */
+:root,
+:root[data-theme='purple'] {
+  --bg: #272822;
+  --fg: #f8f8f2;
+  --fg-dim: #a59f85;
+  --accent: #ae81ff;
+  --rain: #ae81ff;
+  --panel: rgba(39, 40, 34, 0.86);
+  --focus: #e6db74;
+}
+
+:root[data-theme='green'] {
+  --bg: #272822;
+  --fg: #f8f8f2;
+  --fg-dim: #a59f85;
+  --accent: #a6e22e;
+  --rain: #a6e22e;
+  --panel: rgba(39, 40, 34, 0.86);
+  --focus: #e6db74;
+}
+
+:root[data-theme='amber'] {
+  --bg: #272822;
+  --fg: #f8f8f2;
+  --fg-dim: #a59f85;
+  --accent: #fd971f;
+  --rain: #fd971f;
+  --panel: rgba(39, 40, 34, 0.86);
+  --focus: #e6db74;
+}
+
+:root[data-theme='cyan'] {
+  --bg: #272822;
+  --fg: #f8f8f2;
+  --fg-dim: #a59f85;
+  --accent: #66d9ef;
+  --rain: #66d9ef;
+  --panel: rgba(39, 40, 34, 0.86);
+  --focus: #e6db74;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Hack Nerd Font Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+#rain {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+}
+
+.terminal {
+  position: fixed;
+  inset: 1rem 0 auto 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: min(100% - 2rem, 60rem);
+  height: calc(100dvh - 2rem);
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.terminal-output {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.terminal-output a {
+  color: var(--accent);
+}
+
+.terminal-form {
+  display: flex;
+  gap: 0.5ch;
+  align-items: center;
+  flex: 0 0 auto;
+  margin: 0;
+  padding-top: 0.5rem;
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.terminal-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  caret-color: var(--accent);
+}
+
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  padding: 1rem;
+  white-space: pre-wrap;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.boot:empty {
+  display: none;
+}
+
+.line-dim {
+  color: var(--fg-dim);
+}
+
+.line-error {
+  color: #f92672;
+}
+
+.noscript {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: auto;
+  padding: 1rem;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.noscript a,
+#fallback a {
+  color: var(--accent);
+}
+
+/* Accessible hiding: stays available to assistive tech. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.terminal-input:focus-visible {
+  outline-offset: 4px;
+}
+
+@media (max-width: 40rem) {
+  html,
+  body {
+    font-size: 14px;
+  }
+
+  .terminal {
+    width: calc(100% - 1rem);
+    inset-block-start: 0.5rem;
+    height: calc(100dvh - 1rem);
+    padding: 0.75rem;
+  }
+}
+
+.line-heading {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.line-input {
+  color: var(--fg-dim);
+}
+
+/* Themed scrollbars so the output pane matches the active theme. */
+#terminal,
+#terminal * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--fg-dim) transparent;
+}
