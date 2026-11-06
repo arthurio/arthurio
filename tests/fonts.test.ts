@@ -6,9 +6,17 @@ const root = process.cwd();
 const css = readFileSync(join(root, 'src/styles/main.css'), 'utf8');
 
 function unicodeRanges(): Array<[number, number]> {
-  const match = /unicode-range:\s*([^;]+);/.exec(css);
-  if (!match?.[1]) throw new Error('no unicode-range in main.css');
-  return match[1].split(',').map((part) => {
+  const lists = [...css.matchAll(/unicode-range:\s*([^;]+);/g)].map((m) =>
+    (m[1] ?? '').trim().replace(/\s+/g, ' '),
+  );
+  const faces = css.match(/@font-face/g)?.length ?? 0;
+  if (lists.length < 2 || lists.length !== faces) {
+    throw new Error('expected unicode-range in every @font-face');
+  }
+  if (lists.some((list) => list !== lists[0])) {
+    throw new Error('unicode-range differs between @font-face blocks');
+  }
+  return (lists[0] ?? '').split(',').map((part) => {
     const [lo, hi] = part.trim().replace(/^U\+/i, '').split('-');
     const start = parseInt(lo ?? '', 16);
     return [start, hi ? parseInt(hi, 16) : start];
